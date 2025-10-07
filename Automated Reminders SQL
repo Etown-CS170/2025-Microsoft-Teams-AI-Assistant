@@ -1,0 +1,10 @@
+create extension if not exists pg_cron with schema extensions;
+select cron.schedule(
+  'send_due_reminders', 
+  '* * * * *', 
+  $$
+    select net.http_post(
+      url := 'https://vxyahvhmrzwxboipyzkw.supabase.co/functions/v1/send-due-reminders'
+    );
+  $$
+);
