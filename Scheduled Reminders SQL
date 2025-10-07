@@ -1,9 +1,0 @@
-create table reminders (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  body text,
-  due_at timestamptz not null,
-  status text not null default 'scheduled',
-  teams_webhook_url text not null,
-  created_at timestamptz not null default now()
-);
